@@ -22,7 +22,8 @@ This module extracts the 'up_param' partition, removes those files, re-archives 
 - Reboot
 
 ## Uninstallation:
-### (The 'uninstall.sh' script is currently not working, hence manual uninstallation is required.)
+(The 'uninstall.sh' script is currently not working, hence manual uninstallation is required.)
+
 - Enable USB debugging & connect your device to a computer with ADB
 - Run:
   * `adb root`
@@ -30,7 +31,8 @@ This module extracts the 'up_param' partition, removes those files, re-archives 
 - Reboot
 
 ## Recovery:
-### (If something goes wrong with patching up_param.)
+(If something goes wrong with patching up_param.)
+
 - Go to 'https://samfw.com/'
 - Search for your device model
 - Select your country
