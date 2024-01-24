@@ -7,6 +7,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - name: Install dependencies
+      run: |
+        apt update
+        apt install coreutils binutils curl
+
     - name: Checkout source
       uses: actions/checkout@v3
       with:
@@ -16,9 +21,8 @@ jobs:
     
     - name: Gather files
       run: |
-        PATH="~/module/META-INF/com/google/android"
-        [ -d "$PATH" ] || mkdir -p $PATH
-        cd $PATH
+        mkdir -p ~/module/META-INF/com/google/android
+        cd ~/module/META-INF/com/google/android
         curl -L https://github.com/topjohnwu/Magisk/raw/master/scripts/module_installer.sh -o ./update-binary
         echo "#MAGISK" > updater-script
       
