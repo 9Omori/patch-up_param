@@ -26,7 +26,7 @@ jobs:
     - name: Package module
       run: |
         cd ~/patch-up_param/module
-        fastjar patch-up_param.zip *
+        fastjar -cf patch-up_param.zip *
         mv patch-up_param.zip ~
       
     - name: Upload final output
