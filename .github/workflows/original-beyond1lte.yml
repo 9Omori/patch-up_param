@@ -1,4 +1,4 @@
-name: Get 'up_param' for 'beyond1lte'
+name: beyond1lte up_param
 
 on:
   workflow_dispatch:
