@@ -16,7 +16,9 @@ jobs:
     
     - name: Gather files
       run: |
-        cd ~/module/META-INF/com/google/android
+        PATH="~/module/META-INF/com/google/android"
+        [ -d "$PATH" ] || mkdir -p $PATH
+        cd $PATH
         curl -L https://github.com/topjohnwu/Magisk/raw/master/scripts/module_installer.sh -o ./update-binary
         echo "#MAGISK" > updater-script
       
