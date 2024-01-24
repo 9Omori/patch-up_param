@@ -10,7 +10,7 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt update
-        sudo apt install coreutils binutils curl
+        sudo apt install coreutils binutils curl fastjar
 
     - name: Checkout source
       uses: actions/checkout@v3
@@ -21,18 +21,17 @@ jobs:
     
     - name: Gather files
       run: |
-        mkdir -p ~/module/META-INF/com/google/android
-        cd ~/module/META-INF/com/google/android
-        curl -L https://github.com/topjohnwu/Magisk/raw/master/scripts/module_installer.sh -o ./update-binary
+        cd ~/module
+        mkdir -p META-INF/com/google/android
+        curl -L https://github.com/topjohnwu/Magisk/raw/master/scripts/module_installer.sh -o ./META-INF/com/google/android/update-binary
         echo "#MAGISK" > updater-script
+
+    - name: Package module
+      run: |
+        cd ~/module
+        fastjar patch-up_param.zip *
       
     - name: Upload final output
       uses: actions/upload-artifact@v3
       with:
-        name: patch-up_param.zip
-        path: |
-          ~/module/customize.sh
-          ~/module/META-INF/com/google/android/update-binary
-          ~/module/META-INF/com/google/android/updater-script
-          ~/module.prop
-          ~/uninstall.sh
+        path: ~/module/patch-up_param.zip
