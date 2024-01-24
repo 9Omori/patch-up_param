@@ -1,10 +1,14 @@
 # up_param patcher
 
 ### How does it work?
-The 'up_param' partition on Samsung phones is a .TAR archive that stores images used on boot:\n
-`adb shell dd if=/dev/block/by-name/up_param status=none | file -`\n
-Output: `/dev/stdin: POSIX tar archive (GNU)`\n
-The 'svb_orange.jpg' and 'booting_warning.jpg' are the images responsible for the 'bootloader unlocked' warning\n
+The 'up_param' partition on Samsung phones is a .TAR archive that stores images used on boot:
+
+`adb shell dd if=/dev/block/by-name/up_param status=none | file -`
+
+Output: `/dev/stdin: POSIX tar archive (GNU)`
+
+The 'svb_orange.jpg' and 'booting_warning.jpg' are the images responsible for the 'bootloader unlocked' warning
+
 This module extracts the 'up_param' partition, removes those files, re-archives 'up_param' and flashes the partition
 
 ## Requirements:
