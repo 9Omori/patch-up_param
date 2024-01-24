@@ -19,7 +19,8 @@ jobs:
     - name: Extract BL.tar
       run: |
         cd ~/patch-up_param/BL/beyond1lte
-        tar xf BL.tar up_param.bin.lz4 -C '-' | unlz4 > up_param.tar
+        tar xf BL.tar up_param.bin.lz4 
+        unlz4 < up_param.bin.lz4 > up_param.tar
         mv up_param.tar ~/up_param-beyond1lte.tar
 
     - name: Upload up_param
