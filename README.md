@@ -16,6 +16,9 @@ This module extracts the 'up_param' partition, removes those files, re-archives 
 ## Requirements:
 - A Samsung phone rooted with KernelSU or Magisk
 
+## Tested on:
+- Galaxy S10 (Exynos, Pixel Experience+ 13) - ✅ Working
+
 ## Installation:
 - Download the .ZIP release file
 - Flash the .ZIP file in KSU/Magisk
