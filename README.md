@@ -17,8 +17,8 @@ This module extracts the 'up_param' partition, removes those files, re-archives 
 (The 'uninstall.sh' script is currently not working, hence manual uninstallation is required.)
 - Enable USB debugging & connect your device to a computer with ADB
 - Run:
-  - `adb root`
-  - `adb shell dd if=/data/adb/modules/samsung_up_param_patcher/original-up_param.tar of=/dev/block/by-name/up_param`
+  * `adb root`
+  * `adb shell dd if=/data/adb/modules/samsung_up_param_patcher/original-up_param.tar of=/dev/block/by-name/up_param`
 - Reboot
 
 ### Recovery:
@@ -31,11 +31,11 @@ This module extracts the 'up_param' partition, removes those files, re-archives 
 - Extract the 'BL_XXXXX_XXXXX_XXXXX_XXXXX.tar' file
 - Extract the 'up_param.bin.lz4' file from the BL.tar file
 - Decompress the 'up_param.bin.lz4' file:
-  - `unlz4 up_param.bin.lz4`
+  * `unlz4 up_param.bin.lz4`
 - Reboot your device to recovery mode & enable ADB
 - Push the up_param file:
-  - `adb push up_param.bin /sdcard`
+  * `adb push up_param.bin /sdcard`
 - Flash the up_param file:
-  - `adb shell dd if=/sdcard/up_param.bin of=/dev/block/by-name/up_param`
+  * `adb shell dd if=/sdcard/up_param.bin of=/dev/block/by-name/up_param`
 - Reboot to system:
-  - `adb reboot system`
+  * `adb reboot system`
