@@ -9,9 +9,7 @@ Output: `/dev/stdin: POSIX tar archive (GNU)`
 
 The 'svb_orange.jpg' and 'booting_warning.jpg' are the images responsible for the 'bootloader unlocked' warning:
 
-`adb shell dd if=/dev/block/by-name/up_param status=none | tar x svb_orange.jpg booting_warning.jpg -C .`
-
-`eog svb_orange.jpg booting_warning.jpg`
+`adb shell dd if=/dev/block/by-name/up_param status=none | tar x svb_orange.jpg booting_warning.jpg -C . ; eog svb_orange.jpg booting_warning.jpg`
 
 This module extracts the 'up_param' partition, removes those files, re-archives 'up_param' and flashes the partition
 
