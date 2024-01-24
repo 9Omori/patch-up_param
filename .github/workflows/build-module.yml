@@ -4,10 +4,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  example_matrix:
-    strategy:
-      matrix:
-        version: [v0.1]
   build:
     runs-on: ubuntu-latest
     steps:
@@ -27,7 +23,7 @@ jobs:
     - name: Upload final output
       uses: actions/upload-artifact@v3
       with:
-        name: patch-up_param-${{ version }}.zip
+        name: patch-up_param.zip
         path: |
           ~/module/customize.sh
           ~/module/META-INF/com/google/android/update-binary
