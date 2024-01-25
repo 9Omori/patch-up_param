@@ -9,10 +9,6 @@ extract ()
     [ -d "./up_param" ] && rm -rf "./up_param"
     mkdir ./up_param
     dd if=/dev/block/by-name/up_param | tar -x -C ./up_param || abort "- Failed to extract up_param!"
-    if ! [ -f "$MODPATH/original-up_param.tar" ]; then
-        ui_print "- Creating backup of original up_param"
-        dd if=/dev/block/by-name/up_param of=$MODPATH/original-up_param.tar
-    fi
 }
 
 patch ()
