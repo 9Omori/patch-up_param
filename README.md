@@ -42,7 +42,7 @@ This module extracts the 'up_param' partition, removes those files, re-archives 
 - Check if your model is there ('up_param-MODEL.tar')
 - Download the archive
 ---------------
-### (Automatic)
+### (Manual)
 - Go to 'https://samfw.com/'
 - Search for your device model
 - Select your country
