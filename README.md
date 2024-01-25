@@ -36,12 +36,10 @@ This module extracts the 'up_param' partition, removes those files, re-archives 
 ## Recovery:
 (If something goes wrong with patching up_param.)
 
----------------
 ### (Prebuilt)
 - Go to the releases section
 - Check if your model is there ('up_param-MODEL.tar')
 - Download the archive
----------------
 ### (Manual)
 - Go to 'https://samfw.com/'
 - Search for your device model
