@@ -17,7 +17,7 @@ This module extracts the 'up_param' partition, removes those files, re-archives 
 - A Samsung phone rooted with KernelSU or Magisk
 
 ## Tested on:
-- Galaxy S10 (Exynos, Pixel Experience+ 13) - ✅ Working
+- Galaxy S10 (Exynos, Pixel Experience+ 13, KernelSU) - ✅ Working
 
 ## Installation:
 - Download the .ZIP release file
@@ -54,9 +54,7 @@ This module extracts the 'up_param' partition, removes those files, re-archives 
   * `unlz4 up_param.bin.lz4`
 ---------------
 - Reboot your device to recovery mode & enable ADB (for CVM-recovery only)
-- Push the up_param file:
-  * `adb push up_param.bin /sdcard`
 - Flash the up_param file:
-  * `adb shell dd if=/sdcard/up_param.bin of=/dev/block/by-name/up_param`
+  * `dd if=./up_param.bin status=none | adb shell dd of=/dev/block/by-name/up_param`
 - Reboot to system:
   * `adb reboot system`
