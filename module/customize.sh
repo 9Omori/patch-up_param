@@ -2,6 +2,9 @@
 
 ui_print "- Extracting up_param"
 {
+    if ! dd if=/dev/block/by-name/up_param status=none; then
+        abort "- up_param not found! Is your device a Samsung phone?"
+    fi
     if ! [ "$PWD" = "$MODPATH" ]; then
         [ -d "$MODPATH/tmp" ] || mkdir -p $MODPATH/tmp
         cd $MODPATH
@@ -9,7 +12,7 @@ ui_print "- Extracting up_param"
     [ -d "./up_param" ] && rm -rf "./up_param"
     mkdir ./up_param
     dd if=/dev/block/by-name/up_param | tar -x -C ./up_param || abort "- Failed to extract up_param!"
-    if ! tar tf $MODPATH/original-up_param.tar &>/dev/null; then
+    if ! [ -f "$MODPATH/original-up_param.tar" ]; then
         ui_print "- Creating backup of original up_param"
         dd if=/dev/block/by-name/up_param of=$MODPATH/original-up_param.tar
     fi
