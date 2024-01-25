@@ -36,11 +36,12 @@ This module extracts the 'up_param' partition, removes those files, re-archives 
 ## Recovery:
 (If something goes wrong with patching up_param.)
 
+---------------
 ### (Prebuilt)
 - Go to the releases section
 - Check if your model is there ('up_param-MODEL.tar')
 - Download the archive
-
+---------------
 ### (Automatic)
 - Go to 'https://samfw.com/'
 - Search for your device model
@@ -51,7 +52,7 @@ This module extracts the 'up_param' partition, removes those files, re-archives 
   * `tar -xf BL_*.tar up_param.bin.lz4`
 - Decompress the 'up_param.bin.lz4' file:
   * `unlz4 up_param.bin.lz4`
-
+---------------
 - Reboot your device to recovery mode & enable ADB (for CVM-recovery only)
 - Push the up_param file:
   * `adb push up_param.bin /sdcard`
