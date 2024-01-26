@@ -28,7 +28,7 @@ if ! dd if=/dev/block/by-name/up_param status=none &>/dev/null; then
     abort "- up_param not found! Is your device a Samsung phone?"
 fi
 
-if ! [[ "$(dd if=/dev/block/by-name/up_param status=none | tar tf)" =~ "svb_orange.jpg" ]]; then
+if ! dd if=/dev/block/by-name/up_param status=none | tar t | grep -q "svb_orange.jpg"; then
     ui_print "- up_param already patched, not patching again."
 else
     ui_print "- Extracting up_param" ; extract
