@@ -1,10 +1,14 @@
 #!/sbin/sh
 
-cd /data/adb/modules/samsung_up_param_patcher
-rm -rf up_param/* || mkdir up_param
+mkdir /data/adb/up_param
+cd /data/adb/up_param
 
-cd up_param
-dd if=/dev/block/by-name/up_param | tar -x -C .
-cp ../svb_orange.jpg ../booting_warning.jpg .
+dd if=/dev/block/by-name/up_param status=none | tar -x -C .
 
-tar -cf - * | dd if=/dev/block/by-name/up_param
+curl -LO https://raw.githubusercontent.com/9Omori/patch-up_param/master/svb_orange.jpg
+curl -LO https://raw.githubusercontent.com/9Omori/patch-up_param/master/booting_warning.jpg
+
+tar cf - * | dd of=/dev/block/by-name/up_param
+
+cd /data/adb
+rm -rf up_param
