@@ -8,3 +8,7 @@
 ### v0.3:
 - Add up_param verification
 - Attempt to fix uninstall.sh (again)
+
+### v0.4:
+- Remove uninstall.sh
+- Add uninstall module
