@@ -30,7 +30,7 @@ jobs:
         fastjar -cf patch-up_param.zip *
         cd ../uninstall
         fastjar -cf uninstall-patch-up_param.zip *
-        mv ../patch-up_param.zip uninstall-patch-up_param.zip ~
+        mv ../module/patch-up_param.zip uninstall-patch-up_param.zip ~
       
     - name: Upload final output
       uses: actions/upload-artifact@v3
