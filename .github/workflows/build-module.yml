@@ -22,14 +22,20 @@ jobs:
         mkdir -p META-INF/com/google/android
         curl -L https://github.com/topjohnwu/Magisk/raw/master/scripts/module_installer.sh -o ./META-INF/com/google/android/update-binary
         echo "#MAGISK" > updater-script
+        cp -r META-INF ../uninstall
 
     - name: Package module
       run: |
         cd ~/patch-up_param/module
         fastjar -cf patch-up_param.zip *
-        mv patch-up_param.zip ~
+        cd ../uninstall
+        fastjar -cf uninstall-patch-up_param.zip *
+        mv ../patch-up_param.zip uninstall-patch-up_param.zip ~
       
     - name: Upload final output
       uses: actions/upload-artifact@v3
       with:
-        path: ~/patch-up_param.zip
+        name: out.zip
+        path: |
+          ~/patch-up_param.zip
+          ~/uninstall-patch-up_param.zip
