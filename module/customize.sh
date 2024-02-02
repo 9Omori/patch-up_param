@@ -14,7 +14,11 @@ extract ()
 patch ()
 {
     cd $MODPATH/up_param
-    for x in "svb_orange.jpg" "booting_warning.jpg"; do [ -f "${x}" ] && rm -f "${x}"; done
+    for x in "svb_orange.jpg" "booting_warning.jpg"; do
+        if [ -f "${x}" ]; then
+            rm -f "${x}" && ui_print "- Removed ${x}"
+        fi
+    done
     rm -f *.tar
 }
 
