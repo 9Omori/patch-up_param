@@ -35,7 +35,7 @@ jobs:
     - name: Upload final output
       uses: actions/upload-artifact@v3
       with:
-        name: out.zip
+        name: out
         path: |
           ~/patch-up_param.zip
           ~/uninstall-patch-up_param.zip
