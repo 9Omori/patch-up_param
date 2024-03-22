@@ -1,6 +1,12 @@
 name: Make module
 
 on:
+  push:
+    paths:
+      - 'module/customize.sh'
+      - 'module/uninstall.sh'
+      - 'module/module.prop'
+      - 'update.json'
   workflow_dispatch:
 
 jobs:
@@ -18,12 +24,12 @@ jobs:
 
     - name: Make structure
       run: |
-        cd -v ~/patch-up_param/module
+        cd ~/patch-up_param/module
         mkdir -pv META-INF/com/google/android
 
     - name: Gather files
       run: |
-        cd -v ~/patch-up_param/module
+        cd ~/patch-up_param/module
         curl -L https://github.com/topjohnwu/Magisk/raw/master/scripts/module_installer.sh -o ./META-INF/com/google/android/update-binary
         echo "#MAGISK" >updater-script
 
