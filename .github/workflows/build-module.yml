@@ -1,4 +1,4 @@
-name: Build module
+name: Make module
 
 on:
   workflow_dispatch:
@@ -16,21 +16,21 @@ jobs:
       run: |
         git clone https://github.com/9Omori/patch-up_param.git ~/patch-up_param
 
+    - name: Make structure
+      run: |
+        cd -v ~/patch-up_param/module
+        mkdir -pv META-INF/com/google/android
+
     - name: Gather files
       run: |
-        cd ~/patch-up_param/module
-        mkdir -p META-INF/com/google/android
+        cd -v ~/patch-up_param/module
         curl -L https://github.com/topjohnwu/Magisk/raw/master/scripts/module_installer.sh -o ./META-INF/com/google/android/update-binary
-        echo "#MAGISK" > updater-script
-        cp -r META-INF ../uninstall
+        echo "#MAGISK" >updater-script
 
     - name: Package module
       run: |
         cd ~/patch-up_param/module
-        fastjar -cf patch-up_param.zip *
-        cd ../uninstall
-        fastjar -cf uninstall-patch-up_param.zip *
-        mv ../module/patch-up_param.zip uninstall-patch-up_param.zip ~
+        fastjar -cf ~/patch-up_param.zip *
       
     - name: Upload final output
       uses: actions/upload-artifact@v3
@@ -38,4 +38,3 @@ jobs:
         name: out
         path: |
           ~/patch-up_param.zip
-          ~/uninstall-patch-up_param.zip

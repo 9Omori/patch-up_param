@@ -1,7 +1,7 @@
 id=samsung_up_param_patcher
 name=Samsung up_param Patcher
-version=v0.4
-versionCode=4
+version=v0.0.1
+versionCode=1
 author=9Omori
-description=Remove bootloader unlocked warning on boot
+description=Remove bootloader unlocked warning on boot for Samsung phones
 updateJson=https://raw.githubusercontent.com/9Omori/patch-up_param/main/update.json

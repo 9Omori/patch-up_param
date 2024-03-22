@@ -1,43 +1,62 @@
 #!/sbin/sh
 
-extract ()
+# errexit -- exit on errors
+set -o errexit
+
+function extract
 {
-    if ! [ "$PWD" = "$MODPATH" ]; then
-        [ -d "$MODPATH/tmp" ] || mkdir -p $MODPATH/tmp
-        cd $MODPATH
+  ui_print "- Extracting up_param"
+
+  if [ "$PWD" != "$MODPATH" ]; then
+    cd $MODPATH
+    if [ ! -d tmp ]; then
+      mkdir -pv tmp
     fi
-    [ -d "./up_param" ] && rm -rf "./up_param"
-    mkdir ./up_param
-    dd if=/dev/block/by-name/up_param | tar -x -C ./up_param || abort "- Failed to extract up_param!"
+  fi
+
+  if [ -d up_param ]; then
+    ui_print "- Removing existing up_param folder"
+    rm -rfv ./up_param
+  fi
+  mkdir up_param
+
+  dd if=/dev/block/by-name/up_param | tar -x -C ./up_param || abort "- Failed to extract up_param!"
+
+  tar -cf up_param.tar up_param
+  mv up_param.tar $MODPATH
 }
 
-patch ()
+function patch
 {
-    cd $MODPATH/up_param
-    for x in "svb_orange.jpg" "booting_warning.jpg"; do
-        if [ -f "${x}" ]; then
-            rm -f "${x}" && ui_print "- Removed ${x}"
-        fi
-    done
-    rm -f *.tar
+  ui_print "- Patching up_param"
+
+  cd "$MODPATH/up_param"
+  for target in svb_orange.jpg booting_warning.jpg; do
+    if [ -f "$target" ]; then
+      rm -f "$target" && ui_print "- Removed $target"
+    fi
+  done
+  rm -fv *.tar
 }
 
-upload ()
+function upload
 {
-    [ "${PWD##*/}" = "up_param" ] || cd up_param
-    tar cf '-' * | dd of=/dev/block/by-name/up_param || abort "- Failed to upload up_param!"
+  ui_print "- Uploading up_param"
+
+  if ! [ "${PWD##*/}" == "up_param" ]; then
+    cd up_param
+  fi
+  tar -cf '-' * | dd of=/dev/block/by-name/up_param || abort "- Failed to upload up_param!"
 }
 
-if ! dd if=/dev/block/by-name/up_param status=none &>/dev/null; then
-    abort "- up_param not found! Is your device a Samsung phone?"
+if (! dd if=/dev/block/by-name/up_param status=none >/dev/null); then
+  abort "- up_param not found! Module can only be used on Samsung phones"
 fi
 
-if ! dd if=/dev/block/by-name/up_param status=none | tar t | grep -q "svb_orange.jpg"; then
-    ui_print "- up_param already patched, not patching again."
+if (! dd if=/dev/block/by-name/up_param status=none | tar -t | grep -q -F "svb_orange.jpg"); then
+  ui_print "- up_param already patched, not patching again"
 else
-    ui_print "- Extracting up_param" ; extract
-    ui_print "- Patching up_param"   ; patch
-    ui_print "- Uploading up_param"  ; upload
+  extract
+  patch
+  upload
 fi
-
-ui_print "- Success"

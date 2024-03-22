@@ -1,6 +1,6 @@
 {
-    "version": "v0.4",
-    "versionCode": 4,
-    "zipUrl": "https://github.com/9Omori/patch-up_param/releases/download/v0.4/patch-up_param-v0.4.zip",
+    "version": "v0.0.1",
+    "versionCode": 1,
+    "zipUrl": "https://github.com/9Omori/patch-up_param/releases/download/v0.0.1/patch-up_param-v0.0.1.zip",
     "changelog": "https://raw.githubusercontent.com/9Omori/patch-up_param/main/changelog.md"
 }
