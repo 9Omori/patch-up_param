@@ -61,16 +61,13 @@ Recovery:
 
    -  ``tar -xf BL_*.tar up_param.bin.lz4``
 
--  Decompress the ‘up_param.bin.lz4’ file:
+-  Reboot your device to recovery mode
 
-   -  .. rubric:: ``unlz4 up_param.bin.lz4``
-         :name: unlz4-up_param.bin.lz4
+- Enable ADB (CWM recoveries only)
 
--  Reboot your device to recovery mode & enable ADB (for CVM-recovery
-   only)
--  Flash the up_param file:
+-  Decompress and flash the up_param file:
 
-   -  ``dd if=./up_param.bin status=none | adb shell dd of=/dev/block/by-name/up_param``
+   -  ``unlz4 -c -k ./up_param.bin.lz4 | adb shell dd of=/dev/block/by-name/up_param``
 
 -  Reboot to system:
 
