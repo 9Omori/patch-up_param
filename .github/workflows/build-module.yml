@@ -30,8 +30,8 @@ jobs:
     - name: Gather files
       run: |
         cd ~/patch-up_param/module
-        curl -L https://github.com/topjohnwu/Magisk/raw/master/scripts/module_installer.sh -o ./META-INF/com/google/android/update-binary
-        echo "#MAGISK" >updater-script
+        curl -Ls https://github.com/topjohnwu/Magisk/raw/master/scripts/module_installer.sh -o ./META-INF/com/google/android/update-binary
+        echo "#MAGISK" >META-INF/com/google/android/updater-script
 
     - name: Package module
       run: |
