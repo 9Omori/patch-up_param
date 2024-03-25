@@ -14,7 +14,7 @@ Output: ``/dev/stdin: POSIX tar archive (GNU)``
 The ‘svb_orange.jpg’ and ‘booting_warning.jpg’ are the images
 responsible for the ‘bootloader unlocked’ warning:
 
-``adb shell 'dd if=/dev/block/by-name/up_param' | tar -x svb_orange.jpg booting_warning.jpg -C /tmp; eog /tmp/{svb_orange.jpg,booting_warning.jpg}``
+``adb shell 'dd if=/dev/block/by-name/up_param' | tar -x svb_orange.jpg booting_warning.jpg -C /tmp; eog /tmp/{svb_orange,booting_warning}.jpg``
 
 This module extracts the ‘up_param’ partition, removes those files,
 re-archives ‘up_param’ and flashes the partition
@@ -33,16 +33,16 @@ Installation:
 -------------
 
 -  Download the .ZIP release file
--  Flash the .ZIP file in KSU/Magisk
+-  Flash the .ZIP file in KernelSU/Magisk
 -  Reboot
 
 Uninstallation:
 ---------------
 
-Uninstallation should be automatic (through uninstall.sh), but in case
-of failure, run the following: - Enter ADB shell: \* ``adb shell`` -
-Write original up_param.tar \* ``cd /data/adb/modules/up_param-patcher``
-\* ``dd if=up_param.tar of=/dev/block/by-name/up_param``
+`uninstall.sh` is currently not working, so
+at the moment this module's patching is
+permanent and irrevisbile. Please be careful
+using it.
 
 Recovery:
 ---------
