@@ -49,15 +49,12 @@ Recovery:
 
 (If something goes wrong with patching up_param.)
 
-(Prebuilt)
-~~~~~~~~~~
+(SAMFW)
+~~~~~~~
 
--  Go to the releases section
--  Check if your model is there (‘up_param-MODEL.tar’)
--  Download the archive ### (Manual)
 -  Go to ‘https://samfw.com/’
 -  Search for your device model
--  Select your country
+-  Select your country and then your mirror
 -  Select the latest download option
 -  Download (this may take a while)
 -  Extract the ‘up_param.bin.lz4’ file from the BL.tar file:
