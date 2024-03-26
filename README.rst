@@ -27,7 +27,7 @@ Requirements:
 Tested on:
 ----------
 
--  Galaxy S10 - 'beyond1lte' (Exynos|CherishOS 5.1/14|Magisk) - ✅ Working
+-  Galaxy S10 - 'beyond1lte' (Exynos, CherishOS 5.1/14, Magisk) - ✅ Working
 
 Installation:
 -------------
